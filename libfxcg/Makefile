@@ -1,7 +1,8 @@
 CC=sh3eb-elf-gcc
 AS=sh3eb-elf-as
-AR=sh3eb-elf-ar
-CFLAGS=-c -mhitachi -ffunction-sections -fdata-sections -m4a-nofpu -mb -Os -nostdlib -Wall -Lr -I../include -flto
+AR=~/casio-gcc/bin/sh3eb-elf-gcc-ar
+CFLAGS=-c -mhitachi -ffunction-sections -fdata-sections -m4a-nofpu -mb -Os -nostdlib -Wall -Lr -I../include -flto -fuse-linker-plugin
+LDFLAGS= $(CFLAGS) -Wl,-static
 ARFLAGS=rs
 VPATH=syscalls
 SHSOURCES=$(wildcard syscalls/*.S) $(wildcard misc/*.S)

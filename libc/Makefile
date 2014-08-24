@@ -1,9 +1,9 @@
 CC=sh3eb-elf-gcc
 AS=sh3eb-elf-as
-AR=sh3eb-elf-ar
+AR=~/casio-gcc/bin/sh3eb-elf-gcc-ar
 CFLAGS=-c -ffunction-sections -fdata-sections -m4a-nofpu -mb -Os -nostdlib \
-	   -mhitachi -ffreestanding -Wall -L../lib -I../include -Wsystem-headers
-LDFLAGS=-Wl,-static -lfxcg
+	   -mhitachi -ffreestanding -Wall -L../lib -I../include -Wsystem-headers -flto -fuse-linker-plugin
+LDFLAGS= $(CFLAGS) -Wl,-static -lfxcg
 ARFLAGS=rsv
 OBJECTS=qsort.o timezone.o time_table_spd.o asctime_r.o asctime.o gmtime_r.o localtime.o localtime_r.o ctime.o isleap.o \
 	vfscanf.o fscanf.o rand.o vsscanf.o __v_scanf.o sscanf.o signal/kill.o wait.o environ.o pwd.o \

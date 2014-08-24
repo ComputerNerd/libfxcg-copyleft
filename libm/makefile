@@ -49,8 +49,10 @@
 #
 # Default IEEE libm
 #
-CFLAGS = -D_IEEE_LIBM  -m4a-nofpu -mb -Os -mhitachi -ffreestanding -Wall -L../lib -I../include -Wsystem-headers
-LDFLAGS=-Wl,-static
+AR=~/casio-gcc/bin/sh3eb-elf-gcc-ar
+RANLIB=~/casio-gcc/bin/sh3eb-elf-gcc-ranlib
+CFLAGS = -D_IEEE_LIBM  -m4a-nofpu -mb -Os -mhitachi -ffreestanding -Wall -L../lib -I../include -Wsystem-headers -flto -fuse-linker-plugin
+LDFLAGS= $(CFLAGS) -Wl,-static
 CC = sh3eb-elf-gcc
 
 INCFILES = fdlibm.h
@@ -101,8 +103,8 @@ obj = 	k_standard.o k_rem_pio2.o \
 all: libm.a 
 
 libm.a : $(obj) 
-	sh3eb-elf-ar cru libm.a $(obj)
-	sh3eb-elf-ranlib libm.a
+	$(AR) cru libm.a $(obj)
+	$(RANLIB) libm.a
 	cp libm.a ../lib/libm.a
 
 source: $(src) README
