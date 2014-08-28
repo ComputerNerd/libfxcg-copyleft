@@ -13,11 +13,11 @@ int cfsetispeed(struct termios *termios_p, speed_t speed){
 	fprintf(stderr,formatErr,__LINE__);
 	return -1;
 }
-int	cfsetospeed(struct termios * termios_p, speed_t speed){
+int cfsetospeed(struct termios * termios_p, speed_t speed){
 	fprintf(stderr,formatErr,__LINE__);
 	return -1;
 }
-int	tcgetattr(int fd, struct termios * termios_p){
+int tcgetattr(int fd, struct termios * termios_p){
 	fprintf(stderr,formatErr,__LINE__);
 	return -1;
 }
@@ -25,7 +25,7 @@ int tcsetattr(int fd, int optional_actions,const struct termios *termios_p){
 	fprintf(stderr,formatErr,__LINE__);
 	return -1;
 }
-int	tcdrain(int fd){
+int tcdrain(int fd){
 	fprintf(stderr,formatErr,__LINE__);
 	return -1;
 }
